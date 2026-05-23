@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Nida Zahra AI & Web Developer Portfolio. Computer Science student specializing in AI, full-stack development."
+    />
+    <meta name="author" content="Nida Zahra" />
+    <title>Nida Zahra | AI Engineer & Full-Stack Developer</title>
+    <!-- Tailwind CSS + Font Awesome Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+      body {
+        background: #010118;
+      }
+      .gradient-text {
+        background: linear-gradient(120deg, #818cf8, #c084fc, #f472b6);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer 5s linear infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 0 12px rgba(79, 70, 229, 0.1);
+        }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-pulse-glow {
+        animation: pulseGlow 2.5s infinite;
+      }
+      .cursor-blink {
+        display: inline-block;
+        width: 2px;
+        height: 1.2em;
+        background: #6366f1;
+        animation: blink 0.8s step-end infinite;
+        vertical-align: middle;
+        margin-left: 4px;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0f2a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+        border-radius: 20px;
+      }
+      .reveal,
+      .reveal-left,
+      .reveal-right {
+        opacity: 0;
+        transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+      .reveal {
+        transform: translateY(30px);
+      }
+      .reveal-left {
+        transform: translateX(-30px);
+      }
+      .reveal-right {
+        transform: translateX(30px);
+      }
+      .reveal.active,
+      .reveal-left.active,
+      .reveal-right.active {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+      }
+      .glass-card {
+        background: rgba(15, 25, 45, 0.65);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(79, 70, 229, 0.25);
+        transition: all 0.25s ease;
+      }
+      .glass-card:hover {
+        border-color: rgba(79, 70, 229, 0.5);
+        box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.4);
+      }
+      .project-img-overlay {
+        background-blend-mode: overlay;
+        transition: transform 0.3s ease;
+      }
+      .project-card:hover .project-img-overlay {
+        transform: scale(1.02);
+      }
+      .profile-female {
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(79, 70, 229, 0.2),
+          rgba(236, 72, 153, 0.15)
+        );
+      }
+      /* custom resume toast */
+      .resume-toast {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #0f172aee;
+        backdrop-filter: blur(16px);
+        border-left: 4px solid #4f46e5;
+        padding: 12px 20px;
+        border-radius: 48px;
+        box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5);
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.9rem;
+        transform: translateX(150%);
+        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+        pointer-events: none;
+      }
+      .resume-toast.show {
+        transform: translateX(0);
+      }
+      /* Netlify form styling overrides - keep glass style */
+      .netlify-input {
+        background: rgba(31, 41, 55, 0.6);
+        border: 1px solid rgba(75, 85, 99, 0.7);
+        transition: all 0.2s;
+      }
+      .netlify-input:focus {
+        border-color: #6366f1;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+        background: rgba(31, 41, 55, 0.8);
+      }
+      .netlify-form-btn {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        transition: all 0.2s ease;
+      }
+      .netlify-form-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px -8px rgba(79, 70, 229, 0.5);
+      }
+    </style>
+  </head>
+  <body class="text-gray-200 overflow-x-hidden">
+    <!-- particle canvas background -->
+    <canvas
+      id="particles-bg"
+      class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none opacity-40"
+    ></canvas>
+
+    <!-- Custom Resume Toast Notification -->
+    <div id="resumeToast" class="resume-toast">
+      <i class="fas fa-file-pdf text-indigo-400 text-xl"></i>
+      <span id="toastMessage" class="text-white font-medium"
+        >Resume downloaded successfully!</span
+      >
+    </div>
+
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center"
+      >
+        <a
+          href="#hero"
+          class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 to-pink-300 bg-clip-text text-transparent"
+          >NIDA</a
+        >
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="#about"
+            class="nav-link text-gray-300 hover:text-white text-sm font-medium transition"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-gray-300 hover:text-white text-sm font-medium transition"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-gray-300 hover:text-white text-sm font-medium transition"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-gray-300 hover:text-white text-sm font-medium transition"
+            >Contact</a
+          >
+          <a
+            href="#"
+            id="desktopResumeBtn"
+            class="bg-gradient-to-r from-indigo-600 to-purple-700 px-4 py-2 rounded-full text-sm font-semibold shadow-lg hover:shadow-indigo-500/30 transition flex items-center gap-2"
+            ><i class="fas fa-download"></i> Resume / CV</a
+          >
+        </div>
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-2xl text-white focus:outline-none"
+        >
+          ☰
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div
+      id="mobileDrawer"
+      class="fixed top-0 right-0 h-full w-72 bg-[#0a0f1f]/95 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 border-l border-indigo-500/30 p-6"
+    >
+      <button
+        id="closeMenu"
+        class="absolute top-5 right-5 text-gray-300 text-2xl"
+      >
+        ✕
+      </button>
+      <div class="flex flex-col gap-6 mt-16">
+        <a href="#about" class="text-white text-lg font-medium">About</a>
+        <a href="#skills" class="text-white text-lg font-medium">Skills</a>
+        <a href="#projects" class="text-white text-lg font-medium">Projects</a>
+        <a href="#contact" class="text-white text-lg font-medium">Contact</a>
+        <hr class="border-gray-700" />
+        <a
+          href="#"
+          id="mobileResumeLink"
+          class="bg-indigo-600 text-center py-2 rounded-full font-semibold flex items-center justify-center gap-2"
+          ><i class="fas fa-download text-sm"></i> Resume</a
+        >
+      </div>
+    </div>
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden"
+    ></div>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="min-h-screen flex items-center pt-24 relative z-10"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col-reverse lg:flex-row items-center gap-12">
+          <div class="flex-1 text-center lg:text-left reveal">
+            <div
+              class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-400/30 rounded-full px-4 py-1.5 text-sm text-indigo-300 mb-5"
+            >
+              <i class="fas fa-laptop-code text-indigo-300"></i>
+              <span>Computer Science · AI Research</span>
+            </div>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
+            >
+              Nida <span class="gradient-text">Zahra</span>
+            </h1>
+            <div class="text-xl text-indigo-200 font-mono mt-3">
+              <span id="typed-text"></span><span class="cursor-blink"></span>
+            </div>
+            <p class="text-gray-400 max-w-md mt-5 lg:mx-0 mx-auto">
+              Building intelligent systems, full-stack applications &
+              data-driven solutions. Final-year CS student passionate about AI
+              engineering.
+            </p>
+            <div
+              class="flex flex-wrap gap-4 justify-center lg:justify-start mt-7"
+            >
+              <a
+                href="#projects"
+                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-500/40 px-6 py-3 rounded-full font-semibold transition flex items-center gap-2"
+                ><i class="fas fa-rocket"></i> Explore Work</a
+              >
+              <a
+                href="#contact"
+                class="border border-indigo-400/60 hover:bg-indigo-500/10 px-6 py-3 rounded-full font-medium transition flex items-center gap-2"
+                ><i class="fas fa-paper-plane"></i> Contact</a
+              >
+            </div>
+            <div
+              class="flex gap-5 justify-center lg:justify-start mt-8 text-gray-400 text-2xl"
+            >
+              <a
+                href="https://github.com/Nidazah"
+                target="_blank"
+                class="hover:text-indigo-300 transition"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/nidazahra24"
+                target="_blank"
+                class="hover:text-indigo-300 transition"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="mailto:nidazahra5322@gmail.com"
+                class="hover:text-indigo-300 transition"
+                ><i class="fas fa-envelope"></i
+              ></a>
+            </div>
+          </div>
+          <div class="flex-1 flex justify-center reveal">
+            <div
+              class="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center animate-pulse-glow profile-female"
+              style="border: 2px solid rgba(129, 140, 248, 0.5)"
+            >
+              <div class="text-center">
+                <i class="fas fa-user-circle text-7xl text-indigo-200/80"></i>
+                <div class="mt-2 text-indigo-300 text-sm font-medium">
+                  Nida Zahra
+                </div>
+              </div>
+              <div
+                class="absolute -top-3 right-4 bg-gray-900/80 backdrop-blur w-12 h-12 rounded-2xl flex items-center justify-center border border-indigo-400/50"
+              >
+                <i class="fas fa-brain text-indigo-300 text-xl"></i>
+              </div>
+              <div
+                class="absolute -bottom-3 left-2 bg-gray-900/80 backdrop-blur w-12 h-12 rounded-2xl flex items-center justify-center border border-indigo-400/50"
+              >
+                <i class="fas fa-microchip text-indigo-300 text-xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center animate-bounce mt-12">
+          <a href="#about" class="text-sm text-gray-500"
+            ><i class="fas fa-chevron-down"></i> scroll</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative z-10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center reveal">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-500/10 px-4 py-1 rounded-full text-indigo-300 text-sm"
+          >
+            <i class="fas fa-user-circle"></i> About Me
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4">
+            Creative developer &
+            <span class="gradient-text">AI enthusiast</span>
+          </h2>
+          <div class="w-20 h-1 bg-indigo-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 mt-12">
+          <div class="glass-card rounded-2xl p-6 md:p-8 reveal-left">
+            <p class="text-gray-300 leading-relaxed">
+              I'm a Computer Science student with deep focus on Artificial
+              Intelligence and full-stack engineering. My work revolves around
+              crafting AI-powered applications, automation tools, and scalable
+              backend systems.
+            </p>
+            <p class="text-gray-300 leading-relaxed mt-4">
+              Currently diving into LLMs, MLOps, and modern web frameworks. I
+              love taking ambiguous problems and turning them into elegant,
+              working products.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span
+                class="bg-indigo-500/20 px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                ><i class="fab fa-python text-xs"></i> Python / FastAPI</span
+              >
+              <span
+                class="bg-indigo-500/20 px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                ><i class="fab fa-react text-xs"></i> React.js</span
+              >
+              <span
+                class="bg-indigo-500/20 px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                ><i class="fas fa-brain text-xs"></i> TensorFlow/Scikit</span
+              >
+              <span
+                class="bg-indigo-500/20 px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                ><i class="fas fa-database text-xs"></i> PostgreSQL</span
+              >
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 reveal-right">
+            <div
+              class="glass-card rounded-xl p-5 text-center hover:border-indigo-400 transition"
+            >
+              <div class="text-3xl font-extrabold text-indigo-300">12+</div>
+              <div class="text-xs text-gray-400 mt-1">Projects shipped</div>
+            </div>
+            <div
+              class="glass-card rounded-xl p-5 text-center hover:border-indigo-400 transition"
+            >
+              <div class="text-3xl font-extrabold text-indigo-300">6</div>
+              <div class="text-xs text-gray-400 mt-1">AI Models</div>
+            </div>
+            <div
+              class="glass-card rounded-xl p-5 text-center hover:border-indigo-400 transition"
+            >
+              <div class="text-3xl font-extrabold text-indigo-300">450+</div>
+              <div class="text-xs text-gray-400 mt-1">Dev hours</div>
+            </div>
+            <div
+              class="glass-card rounded-xl p-5 text-center hover:border-indigo-400 transition"
+            >
+              <div class="text-3xl font-extrabold text-indigo-300">5</div>
+              <div class="text-xs text-gray-400 mt-1">Hackathons</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-[#050a1a]/50 relative z-10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center reveal">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-500/10 px-4 py-1 rounded-full text-indigo-300 text-sm"
+          >
+            <i class="fas fa-tools"></i> Technical Arsenal
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4">
+            Core competencies & tools
+          </h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mt-12">
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fab fa-python text-3xl text-indigo-300"></i>
+            <div class="font-semibold mt-2">Python</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-indigo-500 h-1.5 rounded-full"
+                style="width: 92%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fab fa-js text-3xl text-yellow-400"></i>
+            <div class="font-semibold mt-2">JavaScript/TS</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-yellow-500 h-1.5 rounded-full"
+                style="width: 88%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fas fa-bolt text-3xl text-teal-400"></i>
+            <div class="font-semibold mt-2">FastAPI</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-teal-500 h-1.5 rounded-full"
+                style="width: 86%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fas fa-microchip text-3xl text-purple-400"></i>
+            <div class="font-semibold mt-2">Scikit-learn</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-purple-500 h-1.5 rounded-full"
+                style="width: 80%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fab fa-react text-3xl text-blue-400"></i>
+            <div class="font-semibold mt-2">React</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-blue-500 h-1.5 rounded-full"
+                style="width: 78%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fas fa-database text-3xl text-cyan-400"></i>
+            <div class="font-semibold mt-2">SQL / MongoDB</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-cyan-500 h-1.5 rounded-full"
+                style="width: 85%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fas fa-robot text-3xl text-emerald-400"></i>
+            <div class="font-semibold mt-2">OpenAI API</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-emerald-500 h-1.5 rounded-full"
+                style="width: 82%"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-xl p-5 text-center hover:-translate-y-1 transition"
+          >
+            <i class="fab fa-git-alt text-3xl text-orange-400"></i>
+            <div class="font-semibold mt-2">Git/CI</div>
+            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-2">
+              <div
+                class="bg-orange-500 h-1.5 rounded-full"
+                style="width: 88%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative z-10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center reveal">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-500/10 px-4 py-1 rounded-full text-indigo-300 text-sm"
+          >
+            <i class="fas fa-code-branch"></i> Featured Engineering
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4">
+            Impactful projects
+          </h2>
+          <p class="text-gray-400 mt-2">
+            From AI agents to full-stack platforms — real results
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mt-12">
+          <div
+            class="glass-card rounded-2xl overflow-hidden project-card group"
+          >
+            <div
+              class="h-44 bg-gradient-to-br from-indigo-900/70 to-purple-900/70 flex items-center justify-center"
+            >
+              <i class="fas fa-chart-line text-5xl text-indigo-300"></i>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">AI Career Navigator</h3>
+              <p class="text-gray-400 text-sm mt-1">
+                ML-driven career recommendation engine. 86% prediction accuracy.
+              </p>
+              <a
+                href="https://github.com/Nidazah/AI-Career-Navigator"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-indigo-300 text-sm mt-4"
+                ><i class="fab fa-github"></i> GitHub →</a
+              >
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-2xl overflow-hidden project-card group"
+          >
+            <div
+              class="h-44 bg-gradient-to-br from-slate-800 to-purple-800/80 flex items-center justify-center"
+            >
+              <i class="fas fa-microphone-alt text-5xl text-indigo-300"></i>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Voice Browser Bot</h3>
+              <p class="text-gray-400 text-sm mt-1">
+                Voice-controlled web automation tool, reduces manual navigation
+                by 40%.
+              </p>
+              <a
+                href="https://github.com/Nidazah/Voice-Controlled-Browser-Bot"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-indigo-300 text-sm mt-4"
+                ><i class="fab fa-github"></i> GitHub →</a
+              >
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-2xl overflow-hidden project-card group"
+          >
+            <div
+              class="h-44 bg-gradient-to-br from-indigo-900 to-fuchsia-900/70 flex items-center justify-center"
+            >
+              <i class="fas fa-comment-dots text-5xl text-indigo-300"></i>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Smart AI Chatbot</h3>
+              <p class="text-gray-400 text-sm mt-1">
+                Context-aware conversational agent using transformer models.
+              </p>
+              <a
+                href="https://github.com/Nidazah/Smart-AI-Chatbot"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-indigo-300 text-sm mt-4"
+                ><i class="fab fa-github"></i> GitHub →</a
+              >
+            </div>
+          </div>
+          <div
+            class="glass-card rounded-2xl flex flex-col items-center justify-center text-center p-8 border border-indigo-400/30 col-span-full md:col-span-1"
+          >
+            <i class="fab fa-github-alt text-4xl text-indigo-400 mb-3"></i>
+            <h3 class="font-bold text-lg">GitHub Portfolio</h3>
+            <a
+              href="https://github.com/Nidazah"
+              target="_blank"
+              class="mt-4 inline-flex items-center gap-2 bg-indigo-600/80 hover:bg-indigo-600 px-4 py-2 rounded-full text-sm"
+              >@Nidazah</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section with NETLIFY-FRIENDLY FORM (enhanced with glass morphism & complete integration) -->
+    <section
+      id="contact"
+      class="py-24 relative z-10 bg-gradient-to-b from-transparent to-indigo-950/20"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center reveal">
+          <div
+            class="inline-flex items-center gap-2 bg-indigo-500/10 px-4 py-1 rounded-full text-indigo-300 text-sm"
+          >
+            <i class="fas fa-paper-plane"></i> Connect
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4">
+            Let's build something <span class="gradient-text">impactful</span>
+          </h2>
+          <p class="text-gray-400">Open for collaborations & internships</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+          <!-- Netlify Contact Form: fully Netlify-ready with data-netlify and hidden input -->
+          <div class="glass-card rounded-2xl p-6 md:p-8 reveal-left">
+            <form
+              id="netlifyContactForm"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div class="mb-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  class="w-full netlify-input rounded-xl px-4 py-3 text-white placeholder-gray-400"
+                />
+              </div>
+              <div class="mb-4">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  class="w-full netlify-input rounded-xl px-4 py-3 text-white placeholder-gray-400"
+                />
+              </div>
+              <div class="mb-4">
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Your Message"
+                  required
+                  class="w-full netlify-input rounded-xl px-4 py-3 text-white placeholder-gray-400 resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="netlify-form-btn w-full bg-gradient-to-r from-indigo-600 to-purple-600 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition"
+              >
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+              <p
+                id="netlifyFormFeedback"
+                class="text-green-400 text-center mt-3 hidden"
+              >
+                <i class="fas fa-check-circle"></i> Message sent successfully
+                via Netlify!
+              </p>
+            </form>
+          </div>
+          <!-- Contact info panel -->
+          <div class="glass-card rounded-2xl p-6 md:p-8 reveal-right">
+            <div class="flex items-center gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center"
+              >
+                <i class="fas fa-envelope text-indigo-300"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">Professional email</p>
+                <a
+                  href="mailto:nidazahra5322@gmail.com"
+                  class="font-medium hover:text-indigo-300 transition"
+                  >nidazahra5322@gmail.com</a
+                >
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center"
+              >
+                <i class="fab fa-github text-indigo-300"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">GitHub</p>
+                <a
+                  href="https://github.com/Nidazah"
+                  target="_blank"
+                  class="font-medium hover:text-indigo-300 transition"
+                  >github.com/Nidazah</a
+                >
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center"
+              >
+                <i class="fab fa-linkedin-in text-indigo-300"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400">LinkedIn</p>
+                <a
+                  href="https://www.linkedin.com/in/nidazahra24"
+                  target="_blank"
+                  class="font-medium hover:text-indigo-300 transition"
+                  >linkedin.com/in/nidazahra24</a
+                >
+              </div>
+            </div>
+            <div
+              class="bg-indigo-500/10 border border-indigo-400/30 rounded-xl p-3 text-center text-sm mt-4"
+            >
+              <i class="fas fa-map-marker-alt text-indigo-300 mr-1"></i>
+              Pakistan · UTC+5 | Open to remote/ hybrid roles
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="py-8 text-center text-gray-500 text-sm border-t border-gray-800/50 relative z-10"
+    >
+      <p>
+        © 2026 Nida Zahra — AI & Web Portfolio. Built with
+        <i class="fas fa-heart text-indigo-400"></i> & Tailwind CSS
+      </p>
+      <div class="flex justify-center gap-5 mt-2">
+        <a
+          href="https://github.com/Nidazah"
+          target="_blank"
+          class="hover:text-indigo-300"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/nidazahra24"
+          target="_blank"
+          class="hover:text-indigo-300"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a href="mailto:nidazahra5322@gmail.com" class="hover:text-indigo-300"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        // RESUME DOWNLOAD (Nida_Zahra_Resume.pdf)
+        function triggerResumeDownload() {
+          const resumeContent = `Nida Zahra - AI Engineer & Full-Stack Developer
+
+CONTACT
+Email: nidazahra5322@gmail.com
+GitHub: github.com/Nidazah
+LinkedIn: linkedin.com/in/nidazahra24
+Location: Pakistan (UTC+5)
+
+PROFESSIONAL SUMMARY
+Computer Science final-year student specializing in AI and full-stack engineering. Proven track record of building AI-powered applications and scalable systems.
+
+TECHNICAL SKILLS
+- Python, JavaScript/TS, FastAPI, React, SQL, MongoDB, Scikit-learn, OpenAI API, Git
+
+EDUCATION
+BS Computer Science (expected 2026)
+
+PROJECTS
+- AI Career Navigator (ML recommendations)
+- Voice Controlled Browser Bot
+- Smart AI Chatbot (Transformers/RAG)
+- AI New Year Planner (GPT-4)
+
+ACHIEVEMENTS
+5+ hackathons, 12+ projects shipped.
+
+References available upon request.`;
+          const blob = new Blob([resumeContent], { type: "application/pdf" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "Nida_Zahra_Resume.pdf";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          const toast = document.getElementById("resumeToast");
+          if (toast) {
+            document.getElementById("toastMessage").innerText =
+              "Nida_Zahra_Resume.pdf downloaded!";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 2800);
+          }
+        }
+        const desktopBtn = document.getElementById("desktopResumeBtn");
+        const mobileBtn = document.getElementById("mobileResumeLink");
+        if (desktopBtn)
+          desktopBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            triggerResumeDownload();
+          });
+        if (mobileBtn)
+          mobileBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            triggerResumeDownload();
+            const drawer = document.getElementById("mobileDrawer"),
+              overlay = document.getElementById("overlay");
+            if (drawer) drawer.classList.remove("translate-x-0");
+            if (overlay) overlay.classList.remove("block");
+            document.body.style.overflow = "";
+          });
+
+        // Netlify form handler: show feedback message after submission (native Netlify POST)
+        const netlifyForm = document.getElementById("netlifyContactForm");
+        const feedbackEl = document.getElementById("netlifyFormFeedback");
+        if (netlifyForm && feedbackEl) {
+          netlifyForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // stop page redirect
+            const formData = new FormData(netlifyForm);
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString(),
+            })
+              .then(() => {
+                feedbackEl.classList.remove("hidden");
+                netlifyForm.reset();
+                setTimeout(() => feedbackEl.classList.add("hidden"), 4000);
+              })
+              .catch(() => {
+                feedbackEl.innerText =
+                  "❌ Something went wrong. Try emailing directly.";
+                feedbackEl.classList.remove("hidden");
+              });
+          });
+        }
+
+        // Particles & animations
+        const canvas = document.getElementById("particles-bg"),
+          ctx = canvas.getContext("2d");
+        let w,
+          h,
+          particles = [];
+        function resizeCanvas() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+        class Particle {
+          constructor() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.r = Math.random() * 1.8 + 0.8;
+            this.vx = (Math.random() - 0.5) * 0.2;
+            this.vy = (Math.random() - 0.5) * 0.15;
+          }
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > w) this.vx *= -1;
+            if (this.y < 0 || this.y > h) this.vy *= -1;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(129, 140, 248, 0.35)";
+            ctx.fill();
+          }
+        }
+        for (let i = 0; i < 90; i++) particles.push(new Particle());
+        function animate() {
+          ctx.clearRect(0, 0, w, h);
+          particles.forEach((p) => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animate);
+        }
+        animate();
+        const roles = [
+          "AI Engineer",
+          "Full-Stack Developer",
+          "ML Researcher",
+          "Creative Technologist",
+        ];
+        let idx = 0,
+          ch = 0,
+          del = false,
+          typedSpan = document.getElementById("typed-text");
+        function type() {
+          let cur = roles[idx];
+          if (del) {
+            typedSpan.innerText = cur.substring(0, ch - 1);
+            ch--;
+          } else {
+            typedSpan.innerText = cur.substring(0, ch + 1);
+            ch++;
+          }
+          if (!del && ch === cur.length) {
+            del = true;
+            setTimeout(type, 1600);
+            return;
+          }
+          if (del && ch === 0) {
+            del = false;
+            idx = (idx + 1) % roles.length;
+            setTimeout(type, 280);
+            return;
+          }
+          setTimeout(type, del ? 45 : 90);
+        }
+        setTimeout(type, 400);
+        const reveals = document.querySelectorAll(
+          ".reveal, .reveal-left, .reveal-right",
+        );
+        function checkReveal() {
+          reveals.forEach((el) => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80)
+              el.classList.add("active");
+          });
+        }
+        window.addEventListener("scroll", checkReveal);
+        checkReveal();
+        const nav = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 40)
+            nav.classList.add(
+              "bg-[#050a1a]/80",
+              "backdrop-blur-md",
+              "border-b",
+              "border-indigo-500/20",
+            );
+          else
+            nav.classList.remove(
+              "bg-[#050a1a]/80",
+              "backdrop-blur-md",
+              "border-b",
+            );
+        });
+        const mobBtn = document.getElementById("mobileMenuBtn"),
+          drawer = document.getElementById("mobileDrawer"),
+          overlay = document.getElementById("overlay"),
+          close = document.getElementById("closeMenu");
+        function openDrawer() {
+          drawer.classList.add("translate-x-0");
+          overlay.classList.add("block");
+          document.body.style.overflow = "hidden";
+        }
+        function closeDrawer() {
+          drawer.classList.remove("translate-x-0");
+          overlay.classList.remove("block");
+          document.body.style.overflow = "";
+        }
+        mobBtn?.addEventListener("click", openDrawer);
+        close?.addEventListener("click", closeDrawer);
+        overlay?.addEventListener("click", closeDrawer);
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+              closeDrawer();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
